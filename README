@@ -1,3 +1,8 @@
 1. Change the src/django-project folder to be the name of your project.
 2. Update the buildout.cfg file so the eggs location under the [buildout] setting points to your project file.
-
+3. Run python bootstrap.py -d
+   Note:
+     - The -d command tells bootstrap to use distribute, easy_install's successor
+     - If you want to run your project with a different version of python than your default, specify that when you run the bootstrap command. IE: python2.4 bootstrap.py -d
+4. Run bin/buildout
+   Note: This will get all your project's dependencies listed in your setup.py file.
