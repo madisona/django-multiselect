@@ -1,0 +1,3 @@
+1. Change the src/django-project folder to be the name of your project.
+2. Update the buildout.cfg file so the eggs location under the [buildout] setting points to your project file.
+
