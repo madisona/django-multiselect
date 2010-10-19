@@ -2,7 +2,7 @@
 from setuptools import setup
 
 setup(
-    name="django-buildout",
+    name="django-project",
     version="0.1",
     description="Django app using buildout",
     author="Aaron Madison",
