@@ -2,7 +2,7 @@
 from setuptools import setup
 
 setup(
-    name="django_project",
+    name="django-project",
     version="0.1",
     description="Django app using buildout",
     author="Aaron Madison",
@@ -21,6 +21,6 @@ setup(
     ),
     entry_points=("""
         [console_scripts]
-        manage=manage:main
+        manage=project.manage:main
     """)
 )
