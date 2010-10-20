@@ -1,8 +1,35 @@
 1. Change the src/django-project folder to be the name of your project.
-2. Update the buildout.cfg file so the eggs location under the [buildout] setting points to your project file.
+
+2. Update the buildout.cfg file so the eggs location under the [buildout] 
+   setting points to your project file.
+
 3. Run python bootstrap.py -d
    Note:
-     - The -d command tells bootstrap to use distribute, easy_install's successor
-     - If you want to run your project with a different version of python than your default, specify that when you run the bootstrap command. IE: python2.4 bootstrap.py -d
-4. Run bin/buildout
-   Note: This will get all your project's dependencies listed in your setup.py file.
+     - The -d command tells bootstrap to use distribute, easy_install's 
+       successor
+     - If you want to run your project with a different version of python
+       than your default, specify that when you run the bootstrap command. 
+       IE: python2.4 bootstrap.py -d
+
+4. Rename your project folder if you want (src/project).
+   If you do, you'll need to change the name in a couple other spots.
+   - In the setup.py, make sure the console_scripts entry point points 
+     to your new folder
+   - In src/project/settings.py make sure the ROOT_URLCONF points to your 
+     folder: 'project.urls'
+
+5. Run bin/buildout
+   Note: This will get all your project's dependencies listed in your 
+         setup.py file.
+
+Just like that, you're up and running and ready to develop and application 
+using django and buildout.
+
+In the django tutorials where you see ./manage.py [command] just replace 
+it with bin/manage [command].
+
+The benefit of using buildout is that it allows you to keep your 
+development environment controlled so anyone can pick up your project and
+have all the dependencies. Plus, it gives you the added flexibility of 
+using different versions of different modules for various projects instead 
+of having only one installed on your computer.
