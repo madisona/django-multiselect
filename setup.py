@@ -21,6 +21,6 @@ setup(
     ),
     entry_points=("""
         [console_scripts]
-        manage=project.manage:main
+        manage=manage:main
     """)
 )
