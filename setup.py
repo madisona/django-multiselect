@@ -19,8 +19,4 @@ setup(
 #        'unittest-xml-reporting', # useful for continuous integration, makes nice test results
 #        'pylint',        # useful for continuous integration, looks at code quality
     ),
-    entry_points=("""
-        [console_scripts]
-        manage=manage:main
-    """)
 )
