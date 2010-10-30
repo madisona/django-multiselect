@@ -7,44 +7,46 @@ class AbstractScript(object):
     template = ""
 
     def __init__(self, buildout, name, options):
-        self.extra_paths = []
-        if buildout['buildout'].get('extra-paths'):
-            self.extra_paths = [path 
-                for path in buildout['buildout'].get('extra-paths', '').split(' ')]
+        self.egg = zc.recipe.egg.Egg(buildout, 'django_recipes', options)
 
         self.executable = buildout['python']['executable']
-        self.name = name
-        self.buildout = buildout
-        self.options = options
+        self.buildout, self.name, self.options = buildout, name, options
 
-        self.ws = zc.buildout.easy_install.working_set(
-            [buildout['python']['eggs']], self.executable,
-            [buildout['python']['develop-eggs-directory'],
-            buildout['python']['eggs-directory']])
+        self.extra_paths = []
+        if 'extra-paths' in options:
+            self.extra_paths = [path for path in options['extra-paths'].split(' ')]
 
     def install(self):
+        requirements, ws = self.egg.working_set()
+        #ws = self.ws
+        #self.ws = zc.buildout.easy_install.working_set(
+        #    [buildout['python']['eggs']], self.executable,
+        #    [buildout['python']['develop-eggs-directory'],
+        #    buildout['python']['eggs-directory']])
+
         script_paths = []
-        script_paths.extend(self.make_scripts(self.extra_paths))
+        script_paths.extend(self.create_script(self.extra_paths, ws))
         return script_paths
 
     def update(self):
         pass
 
-    def make_scripts(self, extra_paths):
-        scripts = []
+    def create_script(self, extra_paths, ws):
+        # save off the default script template, we'll put it back when done
         _script_template = zc.buildout.easy_install.script_template
+        
         zc.buildout.easy_install.script_template = \
             zc.buildout.easy_install.script_header + self.template
-        scripts.extend(
-            zc.buildout.easy_install.scripts(
+        script = zc.buildout.easy_install.scripts(
                 [(self.file_name, '', '')],
-                self.ws,
+                ws,
                 self.executable,
                 self.buildout['python']['bin-directory'],
                 extra_paths=extra_paths,
-                arguments=""))
+                arguments="")
+        # put template back
         zc.buildout.easy_install.script_template = _script_template
-        return scripts
+        return script
 
 class Wsgi(AbstractScript):
     file_name = 'django.wsgi'
