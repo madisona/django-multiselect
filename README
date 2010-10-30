@@ -13,11 +13,11 @@
          setup.py file.
 
 Just like that, you're up and running and ready to develop and application 
-using django and buildout. run `bin/manage runserver`, point your browser
+using django and buildout. run `bin/manage.py runserver`, point your browser
 to localhost:8000 and you'll see django's "It worked!" page.
 
 In the django tutorials where you see ./manage.py [command] just replace 
-it with bin/manage [command].
+it with bin/manage.py [command].
 
 The benefit of using buildout is that it allows you to keep your 
 development environment controlled so anyone can pick up your project and
