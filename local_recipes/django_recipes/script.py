@@ -2,14 +2,10 @@
 import os
 import zc
 
-class AbstractScript(object):
-    file_name = ""
-    template = ""
+class Recipe(object):
 
     def __init__(self, buildout, name, options):
         self.egg = zc.recipe.egg.Egg(buildout, 'django_recipes', options)
-
-        self.executable = buildout['python']['executable']
         self.buildout, self.name, self.options = buildout, name, options
 
         self.extra_paths = []
@@ -17,40 +13,50 @@ class AbstractScript(object):
             self.extra_paths = [path for path in options['extra-paths'].split(' ')]
 
     def install(self):
+        self.options.setdefault('wsgi', "false")
+
         requirements, ws = self.egg.working_set()
-        #ws = self.ws
-        #self.ws = zc.buildout.easy_install.working_set(
-        #    [buildout['python']['eggs']], self.executable,
-        #    [buildout['python']['develop-eggs-directory'],
-        #    buildout['python']['eggs-directory']])
 
         script_paths = []
-        script_paths.extend(self.create_script(self.extra_paths, ws))
+
+        # create manage.py script
+        script_paths.extend(self.create_manage_script(self.extra_paths, ws))
+        if self.options['wsgi'].lower() == "true":
+            script_paths.extend(self.create_wsgi_script(self.extra_paths, ws))
+
         return script_paths
 
     def update(self):
-        pass
+        self.install()
+    
+    def create_manage_script(self, extra_paths, ws):
+        file_name = "manage.py"
+        template = manage_template
+        return self.create_script(self.extra_paths, ws, file_name, template)
 
-    def create_script(self, extra_paths, ws):
+    def create_wsgi_script(self, extra_paths, ws):
+        file_name = "django.wsgi"
+        template = wsgi_template
+        return self.create_script(self.extra_paths, ws, file_name, template)
+
+    def create_script(self, extra_paths, ws, file_name, template):
         # save off the default script template, we'll put it back when done
         _script_template = zc.buildout.easy_install.script_template
         
         zc.buildout.easy_install.script_template = \
-            zc.buildout.easy_install.script_header + self.template
+            zc.buildout.easy_install.script_header + template
         script = zc.buildout.easy_install.scripts(
-                [(self.file_name, '', '')],
+                [(file_name, '', '')],
                 ws,
-                self.executable,
-                self.buildout['python']['bin-directory'],
+                self.options['executable'],
+                self.options['bin-directory'],
                 extra_paths=extra_paths,
                 arguments="")
         # put template back
         zc.buildout.easy_install.script_template = _script_template
         return script
 
-class Wsgi(AbstractScript):
-    file_name = 'django.wsgi'
-    template = """
+wsgi_template = """
 
 import os
 import sys
@@ -64,9 +70,7 @@ application = wsgi.WSGIHandler()
 
 """
 
-class Django(AbstractScript):
-    file_name = "manage.py"
-    template = """
+manage_template = """
 import os
 import sys
 

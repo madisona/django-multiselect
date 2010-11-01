@@ -7,6 +7,15 @@ setup(name="django_recipes",
       version=VERSION,
       entry_points = """
       [zc.buildout]
-      wsgi = script:Wsgi
-      django = script:Django
-      """)
+      default = script:Recipe
+      """
+      )
+      #wsgi = script:Wsgi
+
+#      entry_points="""
+#      # -*- Entry points: -*-
+#      [zc.buildout]
+#      default = djangorecipe.recipe:Recipe
+#      """,
+#      )
+
