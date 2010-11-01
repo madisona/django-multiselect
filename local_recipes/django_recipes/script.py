@@ -8,6 +8,7 @@ class Recipe(object):
         self.egg = zc.recipe.egg.Egg(buildout, 'django_recipes', options)
         self.buildout, self.name, self.options = buildout, name, options
 
+        options['bin-directory'] = buildout['buildout']['bin-directory']
         self.extra_paths = []
         if 'extra-paths' in options:
             self.extra_paths = [path for path in options['extra-paths'].split(' ')]
