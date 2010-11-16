@@ -5,6 +5,7 @@ import zc
 class Recipe(object):
 
     def __init__(self, buildout, name, options):
+        print dir(zc)
         self.egg = zc.recipe.egg.Egg(buildout, 'django_recipes', options)
         self.buildout, self.name, self.options = buildout, name, options
 
@@ -65,6 +66,8 @@ import sys
 sys.path[0:0] = [
     %(path)s,
 ]
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
 from django.core.handlers import wsgi
 application = wsgi.WSGIHandler()
