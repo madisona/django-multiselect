@@ -12,15 +12,22 @@
    Note: This will get all your project's dependencies listed in your 
          setup.py file.
 
-Just like that, you're up and running and ready to develop and application 
-using django and buildout. run `bin/manage.py runserver`, point your browser
-to localhost:8000 and you'll see django's "It worked!" page.
 
-In the django tutorials where you see ./manage.py [command] just replace 
-it with bin/manage.py [command].
+4. You'll want to move the multiselect/media folder and its contents to a
+   place your static media url can see. Be sure to update widgets.py to point
+   to the right directory.
 
-The benefit of using buildout is that it allows you to keep your 
-development environment controlled so anyone can pick up your project and
-have all the dependencies. Plus, it gives you the added flexibility of 
-using different versions of different modules for various projects instead 
-of having only one installed on your computer.
+
+HOW TO USE:
+Just set your form field to use the MultiSelect widget and make sure you include the form media in your template
+
+DEPENDENCIES:
+a jquery theme:
+  multiselect/media/css/themes/smoothness/jquery-ui-1.7.1.custom.css
+
+JQuery https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js
+JQueryUI https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js
+
+Note: We disabled some of the options like draggable and sortable because
+they didn't seem to work well and I didn't like the animations anyways.
+
