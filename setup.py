@@ -8,6 +8,7 @@ setup(
     author="Matt Morrison and Aaron Madison",
     include_package_data=True,
     zip_safe=False, # because we're including media that Django needs
+    packages=('multiselect',),
     package_dir={'multiselect': 'multiselect', '': '.'},
     install_requires = (
         'django',
