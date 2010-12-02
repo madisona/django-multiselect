@@ -1,2 +1,3 @@
+include README
 recursive-include src/multiselect/media *
 recursive-include src/multiselect/templates *
