@@ -1,7 +1,8 @@
 import re
 from django import test
 
-from multiselect import widgets, forms
+from multiselect import models
+from multiselect import widgets, forms, fields
 
 class MultiSelectWidgetTests(test.TestCase):
 
@@ -44,3 +45,12 @@ class ModelMultipleChoiceFieldTests(test.TestCase):
     def should_use_multiselect_widget(self):
         form = forms.ModelSelectForm()
         self.assertTrue(isinstance(form.fields['choices'].widget, widgets.MultiSelectWidget))
+
+class ManyToManyFieldTests(test.TestCase):
+
+    def should_not_include_any_default_help_text(self):
+        self.assertEqual('', unicode(fields.ManyToManyField(models.SampleModel).help_text))
+
+    def should_use_help_text_declared_in_model_when_present(self):
+        field = fields.ManyToManyField(models.SampleModel, help_text="help me")
+        self.assertEqual("help me", field.help_text)

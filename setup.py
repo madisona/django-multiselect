@@ -12,6 +12,6 @@ setup(
     package_dir={'': 'src'},
     install_requires = (
         'django',
+#        'south',
     ),
-    #data_files=[('multiselect/media', ['js/ui.multiselect.js', ]), ]
 )

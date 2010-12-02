@@ -12,7 +12,17 @@ class ModelMultipleChoiceField(DjangoModelMultipleChoiceField):
     widget = MultiSelectWidget
 
 class ManyToManyField(DjangoManyToManyField):
+
+    def __init__(self, *args, **kwargs):
+        super(ManyToManyField, self).__init__(*args, **kwargs)
+        self.help_text = kwargs.get("help_text", '')
+
     def formfield(self, **kwargs):
         kwargs['form_class'] = ModelMultipleChoiceField
         return super(ManyToManyField, self).formfield(**kwargs)
 
+try:
+    from south.modelsinspector import add_introspection_rules
+    add_introspection_rules([], ["^multiselect\.fields\.ManyToManyField"])
+except ImportError:
+    pass
