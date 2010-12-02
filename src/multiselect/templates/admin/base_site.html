@@ -1,0 +1,20 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block extrahead %}
+    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/themes/smoothness/jquery-ui-1.7.1.custom.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js"></script>
+
+    <style type="text/css">
+        form .ui-multiselect {margin-right: 5px; float: left; border-color: #ccc;}
+        form .ui-multiselect div.selected {border-color: #ccc;}
+    </style>
+{% endblock %}
+{% block title %}{{ title }} | {% trans 'Django site admin' %}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">{% trans 'Django administration' %}</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

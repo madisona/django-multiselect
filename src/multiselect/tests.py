@@ -1,7 +1,7 @@
 import re
 from django import test
 
-from multiselect import widgets
+from multiselect import widgets, forms
 
 class MultiSelectWidgetTests(test.TestCase):
 
@@ -32,3 +32,15 @@ class MultiSelectWidgetTests(test.TestCase):
                 break
         else:
             self.fail(msg)
+
+class MultipleChoiceFieldTests(test.TestCase):
+
+    def should_use_multiselect_widget(self):
+        form = forms.SelectForm()
+        self.assertTrue(isinstance(form.fields['choices'].widget, widgets.MultiSelectWidget))
+
+class ModelMultipleChoiceFieldTests(test.TestCase):
+
+    def should_use_multiselect_widget(self):
+        form = forms.ModelSelectForm()
+        self.assertTrue(isinstance(form.fields['choices'].widget, widgets.MultiSelectWidget))
