@@ -7,7 +7,7 @@ setup(
     description="Django Buildout application using multiselect",
     author="Matt Morrison and Aaron Madison",
 
-    package_dir={'multiselect': 'src/multiselect', '': 'src'},
+    package_dir={'multiselect': 'multiselect', '': '.'},
     install_requires = (
         'django',
     ),
