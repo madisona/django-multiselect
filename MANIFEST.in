@@ -1,1 +1,1 @@
-recursive-include media *
+recursive-include src/multiselect/media *
