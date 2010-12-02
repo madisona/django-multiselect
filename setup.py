@@ -12,4 +12,5 @@ setup(
     install_requires = (
         'django',
     ),
+    data_files=[('multiselect/media', '*'), ]
 )
