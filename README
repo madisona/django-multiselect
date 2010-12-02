@@ -1,3 +1,15 @@
+This project provides a multiselect widget for Django.
+
+We're using https://github.com/michael/multiselect for the widget itself and we started with 
+http://djangosnippets.org/snippets/2079/ but added a few more things including:
+
+ - Integration with Django's admin site
+ - A model field that will use the multiselect widget by default
+ - A form field that will use the multiselect widget by default
+
+
+HOW TO INSTALL:
+
 1. Download the source
 
 2. Run python bootstrap.py -d
