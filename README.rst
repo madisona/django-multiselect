@@ -9,7 +9,7 @@ http://djangosnippets.org/snippets/2079/ but added a few more things including:
 - A form field that will use the multiselect widget by default
 
 
-HOW TO INSTALL:
+HOW TO INSTALL SAMPLE APPLICATION:
 ============================================================
 
 #. Download the source
@@ -26,6 +26,17 @@ HOW TO INSTALL:
 #. You'll want to move the multiselect/media folder and its contents to a
    place your static media url can see. Be sure to update widgets.py to point
    to the right directory.
+
+HOW TO ADD TO YOUR APPLICATION:
+============================================================
+We highly recommend using Buildout. If you are using buildout you can add the following to your setup.py::
+
+	dependency_links = (
+		'http://github.com/mattjmorrison/django-multiselect/tarball/1.0#egg=django-multiselect',
+	),
+
+and add ``'django-multiselect'`` to ``install_requires``
+
 
 
 HOW TO USE AS A FIELD:
