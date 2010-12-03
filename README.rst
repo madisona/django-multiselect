@@ -29,13 +29,15 @@ HOW TO INSTALL SAMPLE APPLICATION:
 
 HOW TO ADD TO YOUR APPLICATION:
 ============================================================
-We highly recommend using Buildout. If you are using buildout you can add the following to your setup.py::
 
-	dependency_links = (
-		'http://github.com/mattjmorrison/django-multiselect/tarball/1.0#egg=django-multiselect',
-	),
+- Buildout
+	We highly recommend using Buildout. If you are using buildout you can add the following to your setup.py::
 
-and add ``'django-multiselect'`` to ``install_requires``
+		dependency_links = (
+			'http://github.com/mattjmorrison/django-multiselect/tarball/1.0#egg=django-multiselect',
+		),
+
+	and add ``'django-multiselect'`` to ``install_requires``
 
 
 
