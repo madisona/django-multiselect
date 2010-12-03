@@ -62,7 +62,7 @@ The admin site needs the same dependencies, here is how we added them.  We creat
 (make sure it is in your template_dirs in settings.py) You can either copy Django's admin/base_site.html as a
 starting point, our use ours.
 
-Just add the following:
+Just add the following::
 
     {% block extrahead %}
         <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/themes/smoothness/jquery-ui-1.7.1.custom.css" />
