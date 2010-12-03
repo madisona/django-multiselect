@@ -15,12 +15,9 @@ HOW TO INSTALL:
 #. Download the source
 
 #. Run python bootstrap.py -d
-   Note:
-     - The -d command tells bootstrap to use distribute, easy_install's 
-       successor
-     - If you want to run your project with a different version of python
-       than your default, specify that when you run the bootstrap command. 
-       IE: python2.4 bootstrap.py -d
+	Note:
+	- The -d command tells bootstrap to use distribute, easy_install's successor
+	- If you want to run your project with a different version of python than your default, specify that when you run the bootstrap command. IE: python2.4 bootstrap.py -d
 
 #. Run bin/buildout
    Note: This will get all your project's dependencies listed in your setup.py file.
@@ -44,7 +41,7 @@ HOW TO USE AS A FIELD:
 
 DEPENDENCIES:
 ============================================================
-    The following will need to be manually added to your template(s) so they are available to the widget
+The following will need to be manually added to your template(s) so they are available to the widget
 
 - A jquery theme (like this one):
 	multiselect/media/css/themes/smoothness/jquery-ui-1.7.1.custom.css
@@ -59,8 +56,7 @@ USING THE MULTISELECT WIDGET IN DJANGO'S ADMIN SITE:
 ============================================================
 
 The admin site needs the same dependencies, here is how we added them.  We created our own admin/base_site.html
-(make sure it is in your template_dirs in settings.py) You can either copy Django's admin/base_site.html as a
-starting point, our use ours.
+(make sure it is in your template_dirs in settings.py) You can either copy Django's admin/base_site.html as a starting point, our use ours.
 
 Just add the following::
 
