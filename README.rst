@@ -39,7 +39,10 @@ HOW TO ADD TO YOUR APPLICATION:
 
 	and add ``'django-multiselect'`` to ``install_requires``
 
-
+- Distutils
+	If you prefer to install modules at a system level download the source and run::
+		
+		python setup.py install
 
 HOW TO USE AS A FIELD:
 ============================================================
