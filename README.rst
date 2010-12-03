@@ -15,7 +15,6 @@ HOW TO INSTALL:
 #. Download the source
 
 #. Run python bootstrap.py -d
-	Note:
 	- The -d command tells bootstrap to use distribute, easy_install's successor
 	- If you want to run your project with a different version of python than your default, specify that when you run the bootstrap command. IE: python2.4 bootstrap.py -d
 
