@@ -23,8 +23,7 @@ HOW TO INSTALL:
        IE: python2.4 bootstrap.py -d
 
 #. Run bin/buildout
-   Note: This will get all your project's dependencies listed in your 
-         setup.py file.
+   Note: This will get all your project's dependencies listed in your setup.py file.
 
 
 #. You'll want to move the multiselect/media folder and its contents to a
@@ -34,33 +33,36 @@ HOW TO INSTALL:
 
 HOW TO USE AS A FIELD:
 ============================================================
-    In Your Models:
-        Use multiselect.fields.ManyToManyField instead of django.db.models.ManyToManyField
+- In Your Models:
+	Use multiselect.fields.ManyToManyField instead of django.db.models.ManyToManyField
 
-    In Your Forms:
-        Use multiselect.fields.MultipleChoiceField instead of django.forms.MultipleChoiceField
+- In Your Forms:
+	Use multiselect.fields.MultipleChoiceField instead of django.forms.MultipleChoiceField
 
-If you want to just use the widget:
-    set widget=multiselect.widgets.MultiSelect() on your form's field
+- If you want to just use the widget:
+	set widget=multiselect.widgets.MultiSelect() on your form's field
 
 DEPENDENCIES:
 ============================================================
-    These will need to be manually added to your template(s) so they are available to the widget
+    The following will need to be manually added to your template(s) so they are available to the widget
 
-    a jquery theme (like this one):
-      multiselect/media/css/themes/smoothness/jquery-ui-1.7.1.custom.css
+- A jquery theme (like this one):
+	multiselect/media/css/themes/smoothness/jquery-ui-1.7.1.custom.css
 
-    JQuery https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js
-    JQueryUI https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js
+- JQuery 
+	https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js
+
+- JQueryUI
+	https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js
 
 USING THE MULTISELECT WIDGET IN DJANGO'S ADMIN SITE:
 ============================================================
 
-    The admin site needs the same dependencies, here is how we added them.  We created our own admin/base_site.html
-    (make sure it is in your template_dirs in settings.py) You can either copy Django's admin/base_site.html as a
-    starting point, our use ours.
+The admin site needs the same dependencies, here is how we added them.  We created our own admin/base_site.html
+(make sure it is in your template_dirs in settings.py) You can either copy Django's admin/base_site.html as a
+starting point, our use ours.
 
-    Just add the following:
+Just add the following:
 
     {% block extrahead %}
         <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/themes/smoothness/jquery-ui-1.7.1.custom.css" />
@@ -73,8 +75,8 @@ USING THE MULTISELECT WIDGET IN DJANGO'S ADMIN SITE:
         </style>
     {% endblock %}
 
-    This will add jquery, jquery-ui, a jquery-ui theme and some css so the multiselect widget will play nicely with
-    the Django admin site's styles
+This will add jquery, jquery-ui, a jquery-ui theme and some css so the multiselect widget will play nicely with
+the Django admin site's styles
 
 Note: We disabled some of the options like draggable and sortable because
 they didn't seem to work well and I didn't like the animations anyways.
