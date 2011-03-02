@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name="django-multiselect",
-    version="0.1",
+    version="1.1",
     description="Django Buildout application using multiselect",
     author="Matt Morrison and Aaron Madison",
     include_package_data=True,
