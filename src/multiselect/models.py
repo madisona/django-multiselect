@@ -14,3 +14,6 @@ class SampleModel(models.Model):
     passwd = models.TextField()
     def __unicode__(self):
         return unicode(self.pk)
+
+    def verbose_label(self):
+        return unicode(self.name)

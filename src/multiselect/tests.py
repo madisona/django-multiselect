@@ -46,6 +46,16 @@ class ModelMultipleChoiceFieldTests(test.TestCase):
         form = forms.ModelSelectForm()
         self.assertTrue(isinstance(form.fields['choices'].widget, widgets.MultiSelectWidget))
 
+    def should_use_verbose_label_when_obj_has_attribute(self):
+        model = models.SampleModel(name="A name")
+        f = fields.ModelMultipleChoiceField(models.SampleModel.objects.all())
+        self.assertEqual(model.verbose_label(), f.label_from_instance(model))
+
+    def should_use_super_label_from_instance_when_object_doesnt_have_verbose_label(self):
+        model = models.Choice(choice="a choice")
+        f = fields.ModelMultipleChoiceField(models.Choice.objects.all())
+        self.assertEqual(str(model), f.label_from_instance(model))
+
 class ManyToManyFieldTests(test.TestCase):
 
     def should_not_include_any_default_help_text(self):

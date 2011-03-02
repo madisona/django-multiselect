@@ -11,6 +11,11 @@ class MultipleChoiceField(DjangoMultipleChoiceField):
 class ModelMultipleChoiceField(DjangoModelMultipleChoiceField):
     widget = MultiSelectWidget
 
+    def label_from_instance(self, obj):
+        if hasattr(obj, 'verbose_label'):
+            return obj.verbose_label()
+        return super(ModelMultipleChoiceField, self).label_from_instance(obj)
+
 class ManyToManyField(DjangoManyToManyField):
 
     def __init__(self, *args, **kwargs):
